@@ -1922,15 +1922,15 @@
 			}
 
 		.icon.style1 {
-			color: #00ffcc;
+			color: white;
 		}
 
 		.icon.style2 {
-			color: #00f0ff;
+			color: white;
 		}
 
 		.icon.style3 {
-			color: #76ddff;
+			color: white;
 		}
 
 /* Image */
@@ -2641,7 +2641,7 @@
 		}
 
 		.wrapper.style1 {
-			background-color: #21b2a6;
+			background-color: darkslategrey;
 			color: #c7ebe8;
 		}
 
