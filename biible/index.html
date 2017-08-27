@@ -15,6 +15,7 @@
 		<script src="ui-bootstrap-0.14.0.js"></script>
 		<script src="ui-bootstrap-tpls-0.14.0.js"></script>
 		<script src="core.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 	</head>
 	<body>
 		<style>
@@ -90,7 +91,21 @@
 			}
 			.verse-body {
 				padding-left: 36px;
+				padding-right: 12px;
 			}
+
+			@media (min-width: 666px) {
+			      .myContainer {
+			           width: 100%;
+			           margin: auto;
+
+			      }
+			      .myContainer-should-collapse {
+			           float: left;
+			           width: 50%;
+			           padding: 5px;
+			      }
+			 }
 		</style>
 
 		<div ng-controller="mainController">
@@ -120,10 +135,10 @@
 						<h4 style="margin-top: 0; padding: 0; display: inline-block; vertical-align: top; text-align: right; float: none;">{{$index+1}}</h4>
 					</div>
 					<div class="verse-body">
-						<div class="col-sm-6 col-xs-12">
+						<div class="myContainer myContainer-should-collapse">
 							<p><b>{{japaneseChapter.verses[$index+1]}}</b></p>
 						</div>
-						<div class="col-sm-6 col-xs-12">
+						<div class="myContainer myContainer-should-collapse">
 							<p>{{englishChapter.verses[$index+1]}}</p>
 						</div>
 					</div>

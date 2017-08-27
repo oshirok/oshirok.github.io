@@ -49,14 +49,17 @@ app.controller("mainController",function($scope,$http,$location){
   }
 
   $scope.goNext = function() {
+    window.scrollTo(0, 0);
     $scope.getChapter($scope.nextPage[0], $scope.nextPage[1]);
   }
 
   $scope.goPrev = function() {
+    window.scrollTo(0, 0);
     $scope.getChapter($scope.prevPage[0], $scope.prevPage[1]);
   }
 
   $scope.goTo = function(book, chapter) {
+    window.scrollTo(0, 0);
     $scope.getChapter(book, chapter);
     $scope.toggle();
   }
