@@ -1,7 +1,18 @@
 // public/core.js
 var app = angular.module('test', ["pageslide-directive", 'ui.bootstrap']);
 
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
 app.controller("mainController",function($scope,$http,$location){
+
 
   // Progress variable
   $scope.progress = 0;
@@ -15,15 +26,23 @@ app.controller("mainController",function($scope,$http,$location){
       return new Array(0);   
   }
 
-  var book = $location.search().book;
-  var chapter = $location.search().chapter;
+  var jpnver = getParameterByName('jpnver') || JPNVER;
+  var engver = getParameterByName('engver') || ENGVER;
+  var book = getParameterByName('book');
+  var chapter = getParameterByName('chapter');
 
   $scope.getChapter = function(book, chapter) {
     if(!book || !chapter) {
       book = 'john';
       chapter = 3;
     }
-    $http.get('eng/' + book + '/' + chapter + '.json')
+    if(!jpnver) {
+      jpnver = 'jpn';
+    }
+    if(!engver) {
+      engver = 'eng';
+    }
+    $http.get(engver + '/' + book + '/' + chapter + '.json')
               .success(function (data) {
                       $scope.englishChapter = data;
 
@@ -39,7 +58,7 @@ app.controller("mainController",function($scope,$http,$location){
                       console.log('Error: ' + data);
                   });
 
-    $http.get('jpn/' + book + '/' + chapter + '.json')
+    $http.get(jpnver + '/' + book + '/' + chapter + '.json')
               .success(function (data) {
                       $scope.japaneseChapter = data;
                   })
