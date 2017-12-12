@@ -26,8 +26,10 @@ app.controller("mainController",function($scope,$http,$location){
       return new Array(0);   
   }
 
-  var jpnver = getParameterByName('jpnver') || JPNVER;
-  var engver = getParameterByName('engver') || ENGVER;
+  var jpnver = getParameterByName('jpnver');
+  if(typeof JPNVER !== 'undefined') jpnver = JPNVER;
+  var engver = getParameterByName('engver');
+  if(typeof ENGVER !== 'undefined') engver = ENGVER;
   var book = getParameterByName('book');
   var chapter = getParameterByName('chapter');
 
