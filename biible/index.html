@@ -90,7 +90,7 @@
 				position: absolute;
 			}
 			.verse-body {
-				padding-left: 36px;
+				padding-left: 12px;
 				padding-right: 12px;
 			}
 
@@ -106,6 +106,9 @@
 			           padding: 5px;
 			      }
 			 }
+			ruby > rt {
+				color: indigo;
+			}
 		</style>
 
 		<div ng-controller="mainController">
@@ -131,12 +134,9 @@
 
 			<div class="container content" style="overflow-y:auto;">
 				<div ng-repeat="i in getSize() track by $index" class="verse row" >
-					<div class="verse-number">
-						<h4 style="margin-top: 0; padding: 0; display: inline-block; vertical-align: top; text-align: right; float: none;">{{$index+1}}</h4>
-					</div>
-					<div class="verse-body">
+					<div class="verse-body" style="position: relative;">
 						<div class="myContainer myContainer-should-collapse">
-							<p><b>{{japaneseChapter.verses[$index+1]}}</b></p>
+							<p><span style="color: darkblue;"><b>{{$index+1}}. </b></span><span ng-bind-html="japaneseChapter.verses[$index+1]|trustAsHtml">{{$index+1}</span></p>
 						</div>
 						<div class="myContainer myContainer-should-collapse">
 							<p>{{englishChapter.verses[$index+1]}}</p>
